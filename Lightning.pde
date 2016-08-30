@@ -1,17 +1,42 @@
 int X,Y;
+boolean clear = true;
 
 void setup()
 {
   size(500,500);
+  background(0);
   noLoop();
-
 }
 void draw()
 {
-	//random walk from X to Y-10
-	//then shoot straight toward X,Y
+	int deviation = 0;
 	strokeWeight(5);
-	fill((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+	stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+	if (clear)
+	{
+		background(0);
+		clear = false;
+		return;
+	}
+
+	int currentX = X;
+	int currentY = 0;
+	while (currentY < Y-10)
+	{
+		int deviateX;
+		int newX;
+		do
+		{
+			deviateX = (int)(Math.random()*40)-20;
+		}
+		while (deviation+deviateX>20 || deviation+deviateX<-20);
+		newX = currentX+deviateX;
+		deviation+=deviateX;
+		line(currentX,currentY,newX,currentY+10);
+		currentY+=10;
+		currentX = newX;
+	}
+	line(currentX, currentY, mouseX, mouseY);
 }
 void mousePressed()
 {
@@ -24,7 +49,7 @@ void keyPressed()
 {
 	if (key == 32)
 	{
-		//TODO Set clear-screen here
-		System.out.println("Hello :)");
+		clear = true;
+		redraw();
 	}
 }
