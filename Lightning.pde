@@ -3,7 +3,7 @@ boolean clear = true;
 
 void setup()
 {
-  size(500,500);
+  size(750,750);
   background(0);
   noLoop();
 }
@@ -27,9 +27,9 @@ void draw()
 		int newX;
 		do
 		{
-			deviateX = (int)(Math.random()*40)-20;
+			deviateX = (int)(Math.random()*500)-250;
 		}
-		while (deviation+deviateX>20 || deviation+deviateX<-20);
+		while (deviation+deviateX>250 || deviation+deviateX<-250);
 		newX = currentX+deviateX;
 		deviation+=deviateX;
 		line(currentX,currentY,newX,currentY+10);
