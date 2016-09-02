@@ -3,7 +3,7 @@ boolean clear = true;
 
 void setup()
 {
-  size(750,750);
+  size(750,500);
   background(0);
   noLoop();
 }
